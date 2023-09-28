@@ -1,0 +1,47 @@
+
+<div class="container-form">
+    <h2>SUBIR NUEVO AUDIO RELATADO</h2>
+    <form (ngSubmit)="onSubmit" >
+      <div class="container-inputs">
+        <div class="container__input1">
+          <label for="titulo_audio" class="form__label">Titùlo Del Audio:</label>
+          <input type="text" class="form__control" id="titulo_audio" required formControlName="Title">
+          <label for="musica_fondo" class="form__label">Musica De Fondo:</label>
+          <input type="text" class="form__control" id="musica_fondo" required formControlName="Musica">
+          <label for="procedencia" class="form__label">Procedencia:</label>
+          <input type="text" class="form__control" id="procedencia" required formControlName="Procedencia">
+          <label for="formato" class="form__label">Formato De Audio</label>
+          <select name="formato_audio" id="formato_audio" class="form-select form-select-sm" formControlName="formato">
+            <option value="MP3">MP3</option>
+            <option value="WAV">WAV</option>
+            <option value="AIFF">AIFF</option>
+          </select>
+        </div>
+        <div class="container__input2">
+          <label for="tipo_audio" class="form__label">Tipo De Audio</label>
+          <div class="checkbox-group">
+            <input type="checkbox" class="form__check__imput" id="tipo_audio" formControlName="tipo_audio" required>
+            <label for="cuento" class="form__label">Cuento</label>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" class="form__check__imput" id="tipo_audio" formControlName="tipo_audio" required>
+            <label for="leyenda" class="form__label">Leyenda</label>
+          </div>
+          <label for="Narrador" class="form__label">Narrador</label>
+          <input type="text" class="form__control" id="narrador" name="narrador" formControlName="narrador" required>
+          <label for="duracion" class="form__label">Duracion(Minutos)</label>
+          <input type="text" class="form__control" id="duracion" name="duracion" formControlName="duracion" required>
+        </div>
+      </div>
+      <div class="button-container">
+        <div class="button__cancel">
+          <button>Cancelar</button>
+        </div>
+        <div class="button__submit">
+          <button>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir
+          </button>
+        </div>
+      </div>
+    </form>
+</div>
