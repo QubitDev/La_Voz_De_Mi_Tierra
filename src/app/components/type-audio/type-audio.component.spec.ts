@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AsideComponent } from './aside.component';
+import { TypeAudioComponent } from './type-audio.component';
 
-describe('AsideComponent', () => {
-  let component: AsideComponent;
-  let fixture: ComponentFixture<AsideComponent>;
+describe('TypeAudioComponent', () => {
+  let component: TypeAudioComponent;
+  let fixture: ComponentFixture<TypeAudioComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AsideComponent]
+      declarations: [TypeAudioComponent]
     });
-    fixture = TestBed.createComponent(AsideComponent);
+    fixture = TestBed.createComponent(TypeAudioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
