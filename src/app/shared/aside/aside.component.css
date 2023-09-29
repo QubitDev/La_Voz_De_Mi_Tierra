@@ -1,0 +1,19 @@
+/* Estilos del menú */
+
+/* Estilos de los elementos del menú */
+.menu__item {
+    padding: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+
+}
+
+.menu__item:hover {
+    background-color: gray;
+}
+
+/* Estilos para resaltar el elemento "Inicio" como activo (se puede usar una clase adicional para esto) */
+.menu__item--active {
+    background-color: purple;
+}
