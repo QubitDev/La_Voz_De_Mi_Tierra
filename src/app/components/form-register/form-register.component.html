@@ -1,6 +1,7 @@
 
 <div class="container-form">
-    <h2>SUBIR NUEVO AUDIO RELATADO</h2>
+  <h2>SUBIR NUEVO AUDIO RELATADO</h2>
+
     <form (ngSubmit)="onSubmit" >
       <div class="container-inputs">
         <div class="container__input1">
@@ -16,6 +17,10 @@
             <option value="WAV">WAV</option>
             <option value="AIFF">AIFF</option>
           </select>
+          <div class="file-chooser">
+            <label for="audioFile" class="form__label">Subir archivo de audio:</label>
+            <input type="file" id="audioFile" (change)="onAudioFileSelected($event)" accept=".mp3, .wav, .aiff">
+          </div>
         </div>
         <div class="container__input2">
           <label for="tipo_audio" class="form__label">Tipo De Audio</label>
@@ -31,8 +36,15 @@
           <input type="text" class="form__control" id="narrador" name="narrador" formControlName="narrador" required>
           <label for="duracion" class="form__label">Duracion(Minutos)</label>
           <input type="text" class="form__control" id="duracion" name="duracion" formControlName="duracion" required>
+          
+          <div class="file-chooser">
+            <label for="textFile" class="form__label">Subir archivo de texto:</label>
+            <input type="file" id="textFile" (change)="onTextFileSelected($event)" accept=".txt, .docx">
+          </div>
         </div>
       </div>
+
+
       <div class="button-container">
         <div class="button__cancel">
           <button>Cancelar</button>
