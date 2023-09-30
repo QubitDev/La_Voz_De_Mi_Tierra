@@ -176,11 +176,6 @@ form {
   margin-bottom: 5px;
 }
 
-/* Estilo para los input tipo archivo */
-input[type="file"] {
-  display: none;
-}
-
 /* Estilo para el diseño personalizado del input tipo archivo */
 .file-chooser::before {
   content: "Seleccionar archivo";
@@ -202,4 +197,32 @@ input[type="file"] {
 /* Estilo para el diseño personalizado cuando se hace clic en el input tipo archivo */
 .file-chooser::before:active {
   background-color: #ccc;
+}
+
+
+
+/* viso de imagenes */
+.icon-viewer {
+  text-align: center;
+  margin: 20px;
+}
+
+.select-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-preview {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  display: none;
 }
