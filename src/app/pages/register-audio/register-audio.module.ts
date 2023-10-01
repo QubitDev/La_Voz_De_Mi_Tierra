@@ -5,6 +5,7 @@ import { RegisterAudioRoutingModule } from './register-audio-routing.module';
 import { RegisterAudioComponent } from './register-audio.component';
 
 import { FormRegisterComponent } from "./../../components/form-register/form-register.component"
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,6 +17,8 @@ import { FormRegisterComponent } from "./../../components/form-register/form-reg
   imports: [
     CommonModule,
     RegisterAudioRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class RegisterAudioModule { }

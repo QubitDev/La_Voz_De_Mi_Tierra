@@ -11,14 +11,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormRegisterComponent {
   public preview: String = '';
   public files: any = [];
-  audioForm!: FormGroup;
+  public audioForm!: FormGroup;
   formatFile: String = '';
 
 
   constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private audioService: AudioService*/) {
-
-  }
-  ngOnInit(): void {
     this.audioForm = this.fb.group({
       Title: ['', Validators.required],
       Musica: ['', Validators.required],
@@ -26,8 +23,12 @@ export class FormRegisterComponent {
       formato: ['', Validators.required],
       tipo_audio: ['', Validators.required],
       narrador: ['', Validators.required],
-      duracion: ['', Validators.required]
+      duracion: ['', Validators.required],
+      inputMusica: [null,Validators.required],
+      imputTxt: [null,Validators.required]
     })
+  }
+  ngOnInit(): void {
   }
 
   captureFile(event: any) {
@@ -58,8 +59,8 @@ export class FormRegisterComponent {
     }
   }
 
-  cancelUpload() {
-    // Implementar la funcionalidad de cancelación
+  reset() {
+    this.audioForm.reset();
   }
 
   // private  verifyFile() {

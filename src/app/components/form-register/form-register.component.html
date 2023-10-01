@@ -2,7 +2,7 @@
 <div class="container-form">
   <h2>SUBIR NUEVO AUDIO RELATADO</h2>
 
-    <form (ngSubmit)="onSubmit" >
+    <form  [formGroup]="audioForm" (ngSubmit)="onSubmit" >
       <div class="container-inputs">
         <div class="container__input1">
 
@@ -24,7 +24,7 @@
           <label for="audioFile" class="form__label">Subir archivo de audio:</label>
           <div class="file__chooser">
             <div class="container__upload">
-              <input #fileInput (change)="captureFile($event)" type="file" [accept]="formatFile">
+              <input #fileInput (change)="captureFile($event)" type="file" [accept]="formatFile" formControlName="inputMusica">
               <!-- {{formatFile}} -->
             </div>
             <div class="preview__image" *ngIf="preview">
@@ -53,7 +53,7 @@
           <label for="textFile" class="form__label">Subir archivo de texto:</label>
           <div class="file__chooser">
             <div class="container__upload">
-              <input (change)="captureFile($event)" type="file" accept=".txt, .doc, .docs">
+              <input (change)="captureFile($event)" type="file" accept=".txt, .doc, .docs" formControlName="inputTxt">
             </div>
             <div class="preview__image" *ngIf="preview">
               <img [src]="preview">
@@ -65,7 +65,7 @@
 <!--feat: Buttons "cancel and Submit"  -->
       <div class="button-container">
         <div class="button__cancel">
-          <button  type="button" (click)="cancelUpload()">
+          <button  type="button" (click)="reset()">
             Cancelar
           </button>
         </div>
