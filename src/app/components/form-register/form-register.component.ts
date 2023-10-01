@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+//import { AudioService } from './audio.service'
 
 @Component({
   selector: 'app-form-register',
@@ -10,20 +11,84 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class FormRegisterComponent {
   public preview: String = '';
   public files: any = [];
-  
-  constructor(private sanitizer: DomSanitizer,private readonly fb: FormBuilder){}
-  
+  audioForm!: FormGroup;
+  formatFile: String = '';
+
+
+  constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private audioService: AudioService*/) {
+
+  }
+  ngOnInit(): void {
+    this.audioForm = this.fb.group({
+      Title: ['', Validators.required],
+      Musica: ['', Validators.required],
+      Procedencia: ['', Validators.required],
+      formato: ['', Validators.required],
+      tipo_audio: ['', Validators.required],
+      narrador: ['', Validators.required],
+      duracion: ['', Validators.required]
+    })
+  }
+
   captureFile(event: any) {
+
     const capturedFile = event.target.files[0];
     this.extractBase64(capturedFile).then(image => {
       this.preview = image.base !== null ? image.base : '';
       console.log(image);
     });
     this.files.push(capturedFile);
-    // console.log(event.target.files)
   }
-  
-  extractBase64 = async ($event: any): Promise<{ base: string | null }> => {
+
+  uploadFile(): any {
+    try {
+      const formData = new FormData();
+      this.files.forEach((file: any) => {
+        formData.append('files', file);
+        console.log(file);
+      });
+
+      // this.rest.post(`http://localhost:3001/upload`, formData).subscribe(
+      //   res => {
+      //     console.log('Server response', res);
+      //   }
+      // )
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
+  cancelUpload() {
+    // Implementar la funcionalidad de cancelación
+  }
+
+  // private  verifyFile() {
+  //   // Implementar la funcionalidad de verificación
+  // }
+
+  // uploadFile() {
+  //   if (this.audioForm.valid) {
+  //     this.audioService.uploadAudio(this.audioForm.value)
+  //       .subscribe(
+  //         () => {
+  //           // Mostrar mensaje de éxito
+  //           console.log('¡AUDIO CORRECTAMENTE SUBIDO!');
+  //         },
+  //         (error) => {
+  //           // Manejar errores al subir el audio
+  //           console.error('Error al subir el audio', error);
+  //         }
+  //       );
+  //   } else {
+  //     // Mostrar mensaje de error por datos faltantes
+  //     console.error('ERROR FALTAN DATOS');
+  //   }
+  // }
+
+
+
+// codigo aparate
+  private extractBase64 = async ($event: any): Promise<{ base: string | null }> => {
     return new Promise(async (resolve, reject) => {
       try {
         const unsafeImg = window.URL.createObjectURL($event);
@@ -46,152 +111,24 @@ export class FormRegisterComponent {
         });
       }
     });
-  }
-  
-  uploadFile(): any {
-    try {
-      const formData = new FormData();
-      this.files.forEach((file: any) => {
-        formData.append('files', file);
-        console.log(file);
-      });
-  
-      // this.rest.post(`http://localhost:3001/upload`, formData).subscribe(
-      //   res => {
-      //     console.log('Server response', res);
-      //   }
-      // )
-    } catch (error) {
-      console.log('error', error);
+  } 
+
+
+  // Seleccion de formato
+  updateAcceptAttribute(event: any) {
+    const selectedFormat = event.target.value;
+
+    switch (selectedFormat) {
+      case 'MP3':
+        this.formatFile = '.mp3';
+        break;
+      case 'WAV':
+        this.formatFile = '.wav';
+        break;
+      case 'AIFF':
+        this.formatFile = '.aiff' ;
+        break;
     }
-  }
-  
-
-  
-
-
-
-
-
-
-  // openFileInput() {
-    //   const fileInput = document.getElementById('audioFile');
-  //   if (fileInput) {
-  //     fileInput.click();
-  //   }
-  // }
-
-  // onAudioFileSelected(event: any) {
-  //   const selectedFile = event.target.files[0];
-  
-  //   if (selectedFile) {
-    //     const fileReader = new FileReader();
-
-    //     fileReader.onload = (e) => {
-      //       const filePreview = document.getElementById('file-preview');
-      //       if (filePreview) {
-        //         filePreview.innerHTML = ''; // Limpia cualquier vista previa anterior
-        
-        //         const audio = document.createElement('audio');
-        //         audio.controls = true;
-        //         audio.src = e.target?.result as string;
-        //         filePreview.appendChild(audio);
-        //       }
-        //     };
-
-  //     fileReader.readAsDataURL(selectedFile);
-  //   }
-  // }
-  
-  // @ViewChild('textInput') textInput!: ElementRef<HTMLInputElement>;
-  // selectedFileIcon: string | undefined = '';
-  // iconPreviewDisplay: string = 'none';
-
-  // openFileSelector() {
-  //   this.textInput.nativeElement.click();
-  // }
-
-  // onFileSelected(event: any) {
-  //   const selectedFile = event.target.files[0];
-  //   if (selectedFile) {
-  //     const fileExtension = selectedFile.name.split('.').pop().toLowerCase();
-  //     const iconMappings: { [key: string]: string } = {
-  //       txt: './src/assets/icons/icon_txt.png',
-  //       doc: './src/assets/icons/doc.png',
-  //       default: './src/assets/icons/docs.png'
-  //     };
-  //     this.selectedFileIcon = iconMappings[fileExtension] || iconMappings['default'];
-  //     this.iconPreviewDisplay = 'block';
-  //   } else {
-  //     this.iconPreviewDisplay = 'none';
-  //   }
-  // }
-
-  //metodos para la funcionalida de agregar text
-
-  // selectedFileIcon: string | undefined;
-  // // textFilePreview: string = ''; // Variable para almacenar la vista previa del archivo de texto
-
-  // openFileSelector() {
-  //   const fileInput = document.getElementById('textFile') as HTMLInputElement;
-  //   fileInput.click();
-  // }
-
-  // onFileSelected(event: any): void {
-  //   const fileInput = event.target;
-  //   const selectedFile = fileInput.files[0];
-
-  //   if (selectedFile) {
-  //     this.setSelectedFileIcon(selectedFile);
-  //     // this.previewTextFile(selectedFile);
-  //   } else {
-  //     this.selectedFileIcon = undefined;
-  //   }
-  // }
-
-  // private setSelectedFileIcon(selectedFile: File): void {
-  //   const fileExtension = selectedFile.name.split('.').pop()?.toLowerCase();
-  
-  //   if (fileExtension !== undefined) {
-  //     const iconMappings: { [key: string]: string } = {
-  //       txt: './src/assets/icons/icon_txt.png',
-  //       doc: './src/assets/icons/doc.png', 
-  //       default: './src/assets/icons/docs.png'
-  //     };
-  
-  //     this.selectedFileIcon = iconMappings[fileExtension] || iconMappings['default'];
-  //   }
-  // }
-  
-
-  // private previewTextFile(selectedFile: File): void {
-  //   const fileReader = new FileReader();
-
-  //   fileReader.onload = (e) => {
-  //     const filePreview = document.getElementById('text-file-preview');
-  //     if (filePreview) {
-  //       filePreview.innerHTML = ''; 
-
-  //       const textPreview = document.createElement('pre');
-  //       textPreview.textContent = e.target?.result as string;
-  //       filePreview.appendChild(textPreview);
-  //     }
-  //   };
-
-  //   fileReader.readAsText(selectedFile);
-  // }
-
-
-
-
-
-
-
-  contactForm!: FormGroup;
-
-  // constructor(private readonly fb: FormBuilder){}
-  ngOnInit(): void {
-
   }
 
   onSubmit(){

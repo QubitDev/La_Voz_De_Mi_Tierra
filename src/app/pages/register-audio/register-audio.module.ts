@@ -7,6 +7,7 @@ import { RegisterAudioComponent } from './register-audio.component';
 import { FormRegisterComponent } from "./../../components/form-register/form-register.component"
 
 
+
 @NgModule({
   declarations: [
     RegisterAudioComponent,
@@ -14,7 +15,7 @@ import { FormRegisterComponent } from "./../../components/form-register/form-reg
   ],
   imports: [
     CommonModule,
-    RegisterAudioRoutingModule
+    RegisterAudioRoutingModule,
   ]
 })
 export class RegisterAudioModule { }

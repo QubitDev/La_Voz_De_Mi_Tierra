@@ -5,6 +5,7 @@
     <form (ngSubmit)="onSubmit" >
       <div class="container-inputs">
         <div class="container__input1">
+
           <label for="titulo_audio" class="form__label">Titùlo Del Audio:</label>
           <input type="text" class="form__control" id="titulo_audio" required formControlName="Title">
           <label for="musica_fondo" class="form__label">Musica De Fondo:</label>
@@ -12,7 +13,9 @@
           <label for="procedencia" class="form__label">Procedencia:</label>
           <input type="text" class="form__control" id="procedencia" required formControlName="Procedencia">
           <label for="formato" class="form__label">Formato De Audio</label>
-          <select name="formato_audio" id="formato_audio" class="form-select form-select-sm" formControlName="formato">
+
+          <select (change)="updateAcceptAttribute($event)" name="formato_audio" id="formato_audio" class="form-select form-select-sm" formControlName="formato">
+            <option value="null">-----</option>
             <option value="MP3">MP3</option>
             <option value="WAV">WAV</option>
             <option value="AIFF">AIFF</option>
@@ -21,19 +24,17 @@
           <label for="audioFile" class="form__label">Subir archivo de audio:</label>
           <div class="file__chooser">
             <div class="container__upload">
-              <input (change)="captureFile($event)" type="file" accept=".mp3, .wav, .aiff">
+              <input #fileInput (change)="captureFile($event)" type="file" [accept]="formatFile">
+              <!-- {{formatFile}} -->
             </div>
             <div class="preview__image" *ngIf="preview">
               <img [src]="preview">
             </div>
           </div>
-          <!-- <div class="file-chooser">
-            <button type="button" (click)="openFileInput()">Seleccionar archivo</button>
-            <input type="file" id="audioFile" style="display: none;" (change)="onAudioFileSelected($event)" accept=".mp3, .wav, .aiff">
-          </div>
-          <img [src]="selectedFileIcon" alt="Icono de archivo seleccionado"> -->
+
         </div>
         <div class="container__input2">
+
           <label for="tipo_audio" class="form__label">Tipo De Audio</label>
           <div class="checkbox-group">
             <input type="checkbox" class="form__check__imput" id="tipo_audio" formControlName="tipo_audio" required>
@@ -43,6 +44,7 @@
             <input type="checkbox" class="form__check__imput" id="tipo_audio" formControlName="tipo_audio" required>
             <label for="leyenda" class="form__label">Leyenda</label>
           </div>
+
           <label for="Narrador" class="form__label">Narrador</label>
           <input type="text" class="form__control" id="narrador" name="narrador" formControlName="narrador" required>
           <label for="duracion" class="form__label">Duracion(Minutos)</label>
@@ -57,12 +59,13 @@
               <img [src]="preview">
             </div>
           </div>
+
         </div>
       </div>
 <!--feat: Buttons "cancel and Submit"  -->
       <div class="button-container">
         <div class="button__cancel">
-          <button  type="button" (click)="uploadFile()">
+          <button  type="button" (click)="cancelUpload()">
             Cancelar
           </button>
         </div>
