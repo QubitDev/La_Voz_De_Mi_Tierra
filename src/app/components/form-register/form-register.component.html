@@ -27,9 +27,9 @@
               <input #fileInput (change)="captureFile($event)" type="file" [accept]="formatFile" formControlName="inputMusica">
               <!-- {{formatFile}} -->
             </div>
-            <div class="preview__image" *ngIf="preview">
+            <!-- <div class="preview__image" *ngIf="preview">
               <img [src]="preview">
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -55,9 +55,9 @@
             <div class="container__upload">
               <input (change)="captureFile($event)" type="file" accept=".txt, .doc, .docs" formControlName="inputTxt">
             </div>
-            <div class="preview__image" *ngIf="preview">
+            <!-- <div class="preview__image" *ngIf="preview">
               <img [src]="preview">
-            </div>
+            </div> -->
           </div>
 
         </div>

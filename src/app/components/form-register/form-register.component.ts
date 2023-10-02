@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent {
-  public preview: String = '';
+  // public preview: String = '';
   public files: any = [];
   public audioForm!: FormGroup;
   formatFile: String = '';
@@ -34,10 +34,10 @@ export class FormRegisterComponent {
   captureFile(event: any) {
 
     const capturedFile = event.target.files[0];
-    this.extractBase64(capturedFile).then(image => {
-      this.preview = image.base !== null ? image.base : '';
-      console.log(image);
-    });
+    // this.extractBase64(capturedFile).then(image => {
+    //   this.preview = image.base !== null ? image.base : '';
+    //   console.log(image);
+    // });
     this.files.push(capturedFile);
   }
 
@@ -130,6 +130,27 @@ export class FormRegisterComponent {
         this.formatFile = '.aiff' ;
         break;
     }
+  }
+
+  // obtencion de duracion de audio
+  async getAudioDuration(file: File): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const audioElement = new Audio();
+      audioElement.src = URL.createObjectURL(file);
+
+      audioElement.addEventListener('loadedmetadata', () => {
+        const durationInSeconds = audioElement.duration;
+        const minutes = Math.floor(durationInSeconds / 60);
+        const seconds = Math.floor(durationInSeconds % 60);
+
+        const formattedDuration = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        resolve(formattedDuration);
+      });
+
+      audioElement.addEventListener('error', (error) => {
+        reject('Error al obtener la duración del archivo de audio.');
+      });
+    });
   }
 
   onSubmit(){
