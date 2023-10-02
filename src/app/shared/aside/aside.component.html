@@ -1,0 +1,3 @@
+<div class="menu__item" *ngFor="let option of menuOptions" (click)="handleClick(option)">
+    <i [class]="option.icon"></i> {{ option.text }}
+</div>
