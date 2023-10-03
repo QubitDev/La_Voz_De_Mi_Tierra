@@ -7,13 +7,46 @@
         <div class="container__input1">
 
           <label for="titulo_audio" class="form__label">Titùlo Del Audio:</label>
-          <input type="text" class="form__control" id="titulo_audio" required formControlName="Title">
+          <input
+            type="text"
+            class="form__control"
+            id="titulo_audio"
+            required
+            formControlName="Title"
+            maxlength="30"
+            minLength="10"
+          >
+          <div *ngIf="audioForm.get('Title')?.value && audioForm.get('Title')?.hasError('pattern')" class="text-danger">
+            No se admiten caracteres especiales.
+          </div>
           <label for="musica_fondo" class="form__label">Musica De Fondo:</label>
-          <input type="text" class="form__control" id="musica_fondo" required formControlName="Musica">
+          <input
+            type="text"
+            class="form__control"
+            id="musica_fondo"
+            required
+            formControlName="Musica"
+            maxlength="50"
+            minLength="50"
+          >
+          <div *ngIf="audioForm.get('Musica')?.value && audioForm.get('Musica')?.hasError('pattern')" class="text-danger">
+            Solo se admite caracteres alfabeticos
+          </div>
           <label for="procedencia" class="form__label">Procedencia:</label>
-          <input type="text" class="form__control" id="procedencia" required formControlName="Procedencia">
-          <label for="formato" class="form__label">Formato De Audio</label>
+          <input
+            type="text"
+            class="form__control"
+            id="procedencia"
+            required
+            formControlName="Procedencia"
+            maxlength="30"
+            minLength="4"
+          >
+          <div *ngIf="audioForm.get('Procedencia')?.value && audioForm.get('Procedencia')?.hasError('pattern')" class="text-danger">
+            Solo se admite caracteres alfabeticos
+          </div>
 
+          <label for="formato" class="form__label">Formato De Audio</label>
           <select (change)="updateAcceptAttribute($event)" name="formato_audio" id="formato_audio" class="form-select form-select-sm" formControlName="formato">
             <option value="null">-----</option>
             <option value="MP3">MP3</option>
@@ -24,7 +57,7 @@
           <label for="audioFile" class="form__label">Subir archivo de audio:</label>
           <div class="file__chooser">
             <div class="container__upload">
-              <input #fileInput (change)="captureFile($event)" type="file" [accept]="formatFile" formControlName="inputMusica">
+              <input #fileInput (change)="captureAudio($event)" type="file" [accept]="formatFile" formControlName="inputMusica">
               <!-- {{formatFile}} -->
             </div>
             <!-- <div class="preview__image" *ngIf="preview">
@@ -37,30 +70,58 @@
 
           <label class="form__label">Tipo De Audio</label>
           <div class="radio-group">
-            <input type="radio" class="form__radio__input" id="cuento" name="tipo_audio" value="cuento" required>
-            <label for="cuento" class="form__label">Cuento</label>
+            <label for="cuento" class="form__label">
+              <input
+                type="radio"
+                class="form__radio__input"
+                id="cuento"
+                name="tipo_audio"
+                value="Cuento"
+                formControlName="Tipo"
+                required
+                >Cuento
+            </label>
           </div>
           <div class="radio-group">
-            <input type="radio" class="form__radio__input" id="leyenda" name="tipo_audio" value="leyenda" required>
-            <label for="leyenda" class="form__label">Leyenda</label>
+            <label for="leyenda" class="form__label">
+              <input
+                type="radio"
+                class="form__radio__input"
+                id="leyenda" name="tipo_audio"
+                value="Leyenda"
+                formControlName="Tipo"
+                required
+              > Leyenda
+            </label>
           </div>
 
 
           <label for="Narrador" class="form__label">Narrador</label>
-          <input type="text" class="form__control" id="narrador" name="narrador" formControlName="narrador" required>
+          <input
+            type="text"
+            class="form__control"
+            id="narrador"
+            name="narrador"
+            formControlName="narrador"
+            required
+            maxlength="50"
+            minLength="2"
+          >
+          <div *ngIf="audioForm.get('narrador')?.value && audioForm.get('narrador')?.hasError('pattern')" class="text-danger">
+            Solo se admite caracteres alfabeticos
+          </div>
           <label for="duracion" class="form__label">Duracion(Minutos)</label>
           <input type="text" [(ngModel)]="duracion" [readonly]="true" class="form__control" id="duracion" name="duracion" formControlName="duracion">
 
           <label for="textFile" class="form__label">Subir archivo de texto:</label>
           <div class="file__chooser">
             <div class="container__upload">
-              <input (change)="captureFile($event)" type="file" accept=".txt, .doc, .docs" formControlName="inputTxt">
+              <input (change)="captureFile($event,audioForm)" type="file" accept=".txt, .doc, .docs" formControlName="inputTxt">
             </div>
             <!-- <div class="preview__image" *ngIf="preview">
               <img [src]="preview">
             </div> -->
           </div>
-
         </div>
       </div>
 <!--feat: Buttons "cancel and Submit"  -->

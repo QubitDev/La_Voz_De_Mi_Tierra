@@ -9,31 +9,81 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form-register.component.css']
 })
 export class FormRegisterComponent {
-  // public preview: String = '';
   public files: any = [];
   public audioForm!: FormGroup;
+
   formatFile: String = '';
   duracion: string = '';
+  selectedTipo: string ='';
 
 
   constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private audioService: AudioService*/) {
     this.audioForm = this.fb.group({
-      Title: ['', Validators.required],
-      Musica: ['', Validators.required],
-      Procedencia: ['', Validators.required],
-      formato: ['', Validators.required],
-      tipo_audio: ['', Validators.required],
-      narrador: ['', Validators.required],
+      Title: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(30),
+          Validators.pattern('^[a-zA-Z0-9\s]+$')
+        ]
+      ],
+      Musica: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(50),
+          Validators.minLength(500),
+          Validators.pattern('^[a-zA-Z\s]+$')
+        ]
+      ],
+      Procedencia: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z\s]+$')
+        ]
+      ],
+      formato: ['----', Validators.required],
+      Tipo: ['', Validators.required],
+      narrador: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(50),
+          Validators.minLength(2),
+          Validators.pattern('^[a-zA-Z\s]+$')
+        ]
+      ],
       duracion: ['', Validators.required],
       inputMusica: [null,Validators.required],
-      imputTxt: [null,Validators.required]
+      inputTxt: [null,Validators.required]
     })
   }
   ngOnInit(): void {
   }
 
-  captureFile(event: any) {
+  captureFile(event: any, audioForm:FormGroup) {
 
+    const tipoAudioElement = audioForm.get('tipo_audio');
+
+  if (tipoAudioElement !== null && tipoAudioElement !== undefined) {
+    this.selectedTipo = tipoAudioElement.value;
+  } else {
+    this.selectedTipo = '';
+  }
+    const capturedFile = event.target.files[0];
+    const formData = audioForm.value;
+    // this.extractBase64(capturedFile).then(image => {
+    //   this.preview = image.base !== null ? image.base : '';
+    //   console.log(image);
+    // });
+    this.files.push(capturedFile, formData);
+  }
+
+  captureAudio(event: any) {
     const capturedFile = event.target.files[0];
     //capturar la duracion del audio
     if (capturedFile) {
@@ -41,10 +91,6 @@ export class FormRegisterComponent {
         this.duracion = duration;
       });
     }
-    // this.extractBase64(capturedFile).then(image => {
-    //   this.preview = image.base !== null ? image.base : '';
-    //   console.log(image);
-    // });
     this.files.push(capturedFile);
   }
 
@@ -80,16 +126,14 @@ export class FormRegisterComponent {
   //       .subscribe(
   //         () => {
   //           // Mostrar mensaje de éxito
-  //           console.log('¡AUDIO CORRECTAMENTE SUBIDO!');
+  //           alert('¡AUDIO CORRECTAMENTE SUBIDO!');
   //         },
   //         (error) => {
-  //           // Manejar errores al subir el audio
-  //           console.error('Error al subir el audio', error);
+  //           alert('Error al subir el audio', error);
   //         }
   //       );
   //   } else {
-  //     // Mostrar mensaje de error por datos faltantes
-  //     console.error('ERROR FALTAN DATOS');
+  //     alert('ERROR FALTAN DATOS');
   //   }
   // }
 
