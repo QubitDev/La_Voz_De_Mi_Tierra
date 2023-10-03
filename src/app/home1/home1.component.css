@@ -1,0 +1,127 @@
+.usuario{
+   position: fixed;
+   top: 120px;
+   left: 320px;
+}
+
+body{
+    background: #642B73;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.titulo{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    text-align: center
+}
+
+.subTitulo{
+    text-shadow: 2px 1.5px #dd79f7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 55px;
+
+}
+.subTitulo1{
+    text-shadow: 2px 1.5px #929192;
+    font-family: Arial, Helvetica, sans-serif;
+    
+
+}
+
+
+.continer{
+    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    
+    
+    
+}
+.box{
+    width: 15rem;
+    height: 15rem;
+    background-color: rgb(171, 114, 173);
+    border-radius: 20px;
+    flex-direction: column;
+
+    flex: 1;
+    transition: .3s all ease;
+    
+}
+
+.box:hover{
+ flex: 2;
+ background-color: rgb(207, 207, 207);
+
+}
+.imagen{
+    width: 150px ;
+    height:150px;
+    justify-content: center;
+    border-radius: 10px;
+    flex-direction: column;
+} 
+
+
+
+button {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.9rem 2rem;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    font-size: 17px;
+    border-radius: 500px;
+    overflow: hidden;
+    background: #c504a5;
+    color: ghostwhite;
+   }
+   
+   button span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+   }
+   
+   button:hover span {
+    color: black;
+   }
+   
+   button::before,
+   button::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+   }
+   
+   button::before {
+    content: "";
+    background: #000;
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+   }
+   
+   button:hover::before {
+    transform: translate3d(100%, 0, 0);
+   }
+   
+        
+        
+    
