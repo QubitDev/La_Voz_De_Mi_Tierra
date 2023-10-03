@@ -13,6 +13,7 @@ export class FormRegisterComponent {
   public files: any = [];
   public audioForm!: FormGroup;
   formatFile: String = '';
+  duracion: string = '';
 
 
   constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private audioService: AudioService*/) {
@@ -34,6 +35,12 @@ export class FormRegisterComponent {
   captureFile(event: any) {
 
     const capturedFile = event.target.files[0];
+    //capturar la duracion del audio
+    if (capturedFile) {
+      this.getAudioDuration(capturedFile).then(duration => {
+        this.duracion = duration;
+      });
+    }
     // this.extractBase64(capturedFile).then(image => {
     //   this.preview = image.base !== null ? image.base : '';
     //   console.log(image);
@@ -112,7 +119,7 @@ export class FormRegisterComponent {
         });
       }
     });
-  } 
+  }
 
 
   // Seleccion de formato

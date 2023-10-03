@@ -17,10 +17,4 @@ export class RegisterAudioComponent {
 
   onSubmit(){
   }
-
-  // initForm(): FormGroup {
-  //   this.fb.group({
-  //     titulo_audio:['',[Validators.required, Validators.length(50)], ]
-  //   })
-  // }
 }

@@ -48,7 +48,7 @@
           <label for="Narrador" class="form__label">Narrador</label>
           <input type="text" class="form__control" id="narrador" name="narrador" formControlName="narrador" required>
           <label for="duracion" class="form__label">Duracion(Minutos)</label>
-          <input type="text" class="form__control" id="duracion" name="duracion" formControlName="duracion" required>
+          <input type="text" [(ngModel)]="duracion" [readonly]="true" class="form__control" id="duracion" name="duracion" formControlName="duracion">
 
           <label for="textFile" class="form__label">Subir archivo de texto:</label>
           <div class="file__chooser">
