@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import { AngularFireStorage } from '@angular/fire/storage';
+// import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class FormRegisterComponent {
   duracion: string = '';
   selectedTipo: string ='';
 
-  constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private audioService: AudioService*/) {
+  constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private storage: AngularFireStorage*/) {
     this.audioForm = this.fb.group({
       Title: [
         '',
@@ -90,6 +92,38 @@ export class FormRegisterComponent {
     this.files.push(capturedFile);
   }
 
+  // uploadFile() {
+  //   if (this.files.length === 0) {
+  //     console.log('No files to upload');
+  //     return;
+  //   }
+
+  //   const file = this.files[0]; // Assuming you are uploading one file at a time
+  //   const filePath = `audio/${new Date().getTime()}_${file.name}`;
+  //   const fileRef = this.storage.ref(filePath);
+
+  //   const uploadTask = this.storage.upload(filePath, file);
+
+  //   // Track the upload progress
+  //   uploadTask.percentageChanges().subscribe((percentage) => {
+  //     console.log(`Uploading: ${percentage}%`);
+  //   });
+
+  //   // Get notified when the upload is complete
+  //   uploadTask
+  //     .snapshotChanges()
+  //     .pipe(
+  //       finalize(() => {
+  //         fileRef.getDownloadURL().subscribe((downloadURL) => {
+  //           console.log('File is uploaded!', downloadURL);
+  //           // Now, you can save the downloadURL to your Firebase Realtime Database or perform any other actions you need.
+  //         });
+  //       })
+  //     )
+  //     .subscribe();
+  // }
+
+
   uploadFile(): any {
     try {
       const formData = new FormData();
@@ -111,8 +145,6 @@ export class FormRegisterComponent {
   reset() {
     this.audioForm.reset();
   }
-
-
 
   // uploadFile() {
   //   if (this.audioForm.valid) {

@@ -7,7 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../../.history/src/app/material.module_20230927011750';
 import { SharedModule } from './shared/shared.module';
-import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireModule } from '@angular/fire/compat';
+
+// import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environments.prod';
 // import { AngularFireStorage } from '@angular/fire/storage';
 
@@ -23,9 +25,11 @@ import { environment } from 'src/environments/environments.prod';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    AngularFireModule.initializeApp(environment.firebase)
+  //   AngularFireModule.initializeApp(environment.firebase),
+  //   // AngularFireModule.initializeApp(firebaseConfig), // Initialize AngularFire with your Firebase config
+  //   AngularFireStorageModule
   ],
-providers: [/*AngularFireStorage*/],
+  providers: [/*AngularFireStorage*/],
   bootstrap: [AppComponent]
 })
 export class AppModule {
