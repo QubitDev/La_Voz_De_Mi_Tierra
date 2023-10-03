@@ -126,16 +126,7 @@
       </div>
 <!--feat: Buttons "cancel and Submit"  -->
       <div class="button-container">
-        <div class="button__cancel">
-          <button  type="button" (click)="reset()">
-            Cancelar
-          </button>
-        </div>
-        <div class="button__submit">
-          <button  type="button" (click)="uploadFile()">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir
-          </button>
-        </div>
+        <app-buttons (customUpload)="handleUpload($event)" (customReset)="handleReset()"></app-buttons>
       </div>
     </form>
   </div>

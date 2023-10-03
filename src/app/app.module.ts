@@ -9,6 +9,7 @@ import { MaterialModule } from '../../.history/src/app/material.module_202309270
 import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environments.prod';
+// import { AngularFireStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { environment } from 'src/environments/environments.prod';
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+providers: [/*AngularFireStorage*/],
   bootstrap: [AppComponent]
 })
 export class AppModule {
