@@ -98,19 +98,19 @@ form {
   background-color: #0056b3;
 }
 
-.checkbox-group {
+.radio-group {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
 
 
-.checkbox-group input[type="checkbox"] {
+.radio-group input[type="checkbox"] {
   margin-right: 10px;
 }
 
 
-.checkbox-group label {
+.radio-group label {
   margin: 18px;
   padding: 0%;
   border-radius:5px;

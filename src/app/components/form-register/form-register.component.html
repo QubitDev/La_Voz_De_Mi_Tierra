@@ -35,15 +35,16 @@
         </div>
         <div class="container__input2">
 
-          <label for="tipo_audio" class="form__label">Tipo De Audio</label>
-          <div class="checkbox-group">
-            <input type="checkbox" class="form__check__imput" id="tipo_audio" formControlName="tipo_audio" required>
+          <label class="form__label">Tipo De Audio</label>
+          <div class="radio-group">
+            <input type="radio" class="form__radio__input" id="cuento" name="tipo_audio" value="cuento" required>
             <label for="cuento" class="form__label">Cuento</label>
           </div>
-          <div class="checkbox-group">
-            <input type="checkbox" class="form__check__imput" id="tipo_audio" formControlName="tipo_audio" required>
+          <div class="radio-group">
+            <input type="radio" class="form__radio__input" id="leyenda" name="tipo_audio" value="leyenda" required>
             <label for="leyenda" class="form__label">Leyenda</label>
           </div>
+
 
           <label for="Narrador" class="form__label">Narrador</label>
           <input type="text" class="form__control" id="narrador" name="narrador" formControlName="narrador" required>
