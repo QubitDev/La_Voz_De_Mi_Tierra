@@ -8,25 +8,24 @@
     font-family: sans-serif;
     margin-top: 10px;
     color: white;
-
 }
 
 .scroll-bg{
     background: linear-gradient(black,purple);       
     padding: 10px;
-    width: 50%;
-    height: 500px;
+    width: 42%;
+    height: 81%;
     position: absolute;
-    right: 800px;
-    top: 250px;
+    right: 44%;
+    top: 11%;
     border: 5px solid #000
     color white;
     
 }
 .scroll-div{
     background: linear-gradient(black,purple); 
-    width: 700px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     overflow-y: scroll;   
 }
@@ -41,17 +40,17 @@
 .DosScroll-bg{
     background: linear-gradient(black,purple);  
     padding: 10px;
-    width: 700px;
-    height: 500px;
+    width: 42%;
+    height: 81%;
     position: absolute;
-    right:25px;
-    top: 250px;
+    right: 1%;
+    top: 11%;    
     border: 5px solid #000
-    
+    color white;   
 }
 .DosScroll-div{
-    width: 800px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(black,purple); 
     overflow: hidden;
     overflow-y: scroll;
@@ -65,22 +64,30 @@
 .contenidoUno{
     font-family: sans-serif;  
     color: white;  
-    margin-left: 50px;
+    position: absolute;
+    right:30%;
+    top: 10%; 
 }
-.contenidoUno{
+.contenidoDos{
     font-family: sans-serif;  
     color: white;  
-    margin-left: 50px;
+    position: absolute;
+    right: 30%;
+    top: 30%;
 }
-.contenidoUno{
+.contenidoTres{
     font-family: sans-serif;  
     color: white; 
-    margin-left: 50px;
+    position: absolute;
+    right: 30%;
+    top: 50%;
 }
-.contenidoUno{
+.contenidoCuatro{
     font-family: sans-serif;  
     color: white;  
-    margin-left: 50px;
+    position: absolute;
+    right: 30%;
+    top: 70%;
 }
 .imageUno{
     margin-left: 5px;
