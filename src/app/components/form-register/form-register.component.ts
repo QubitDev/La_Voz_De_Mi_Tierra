@@ -1,8 +1,7 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-// import { AngularFireStorage } from '@angular/fire/storage';
-
+//import { AudioService } from './audio.service'
 
 @Component({
   selector: 'app-form-register',
@@ -17,8 +16,7 @@ export class FormRegisterComponent {
   duracion: string = '';
   selectedTipo: string ='';
 
-
-  constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private storage: AngularFireStorage*/) {
+  constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, /*private audioService: AudioService*/) {
     this.audioForm = this.fb.group({
       Title: [
         '',
@@ -68,6 +66,13 @@ export class FormRegisterComponent {
 
   captureFile(event: any, audioForm:FormGroup) {
 
+    const tipoAudioElement = audioForm.get('tipo_audio');
+
+  if (tipoAudioElement !== null && tipoAudioElement !== undefined) {
+    this.selectedTipo = tipoAudioElement.value;
+  } else {
+    this.selectedTipo = '';
+  }
     const capturedFile = event.target.files[0];
     const formData = audioForm.value;
     // this.extractBase64(capturedFile).then(image => {
@@ -87,54 +92,50 @@ export class FormRegisterComponent {
     }
     this.files.push(capturedFile);
   }
-  
-  handleUpload(files: any[]): void {
+
+  uploadFile(): any {
     try {
       const formData = new FormData();
-      files.forEach((file: any) => {
+      this.files.forEach((file: any) => {
         formData.append('files', file);
         console.log(file);
       });
 
+      // this.rest.post(`http://localhost:3001/upload`, formData).subscribe(
+      //   res => {
+      //     console.log('Server response', res);
+      //   }
+      // )
     } catch (error) {
       console.log('error', error);
     }
   }
 
-  // Método para manejar el reinicio del formulario desde el componente hijo
-  handleReset(): void {
-    // Lógica para reiniciar el formulario en el componente padre
-    this.audioForm.reset();
-  }
-
-  // async uploadFile(): Promise<void> {
-  //   try {
-  //     const storageRefs: any[] = [];
-  //     await Promise.all(this.files.map(async (file: any) => {
-  //       const filePath = `archivos/${file.name}`;
-  //       const storageRef = this.storage.ref(filePath);
-  //       await storageRef.put(file);
-  //       storageRefs.push(storageRef);
-  //     }));
-
-  //     // Obtener las URLs de los archivos subidos
-  //     const fileUrls = await Promise.all(storageRefs.map(async (storageRef) => {
-  //       return await storageRef.getDownloadURL().toPromise();
-  //     }));
-
-  //     // Ahora tienes las URL de los archivos subidos en fileUrls
-  //     console.log('URLs de archivos subidos:', fileUrls);
-
-  //     // Luego, puedes enviar estos URLs y otros datos a la base de datos de Firebase Realtime Database o Firestore según tus necesidades.
-
-  //   } catch (error) {
-  //     alert('Error al cargar archivos:');
-  //   }
-  // }
-
   reset() {
     this.audioForm.reset();
   }
+
+  // private  verifyFile() {
+  //   // Implementar la funcionalidad de verificación
+  // }
+
+  // uploadFile() {
+  //   if (this.audioForm.valid) {
+  //     this.audioService.uploadAudio(this.audioForm.value)
+  //       .subscribe(
+  //         () => {
+  //           // Mostrar mensaje de éxito
+  //           alert('¡AUDIO CORRECTAMENTE SUBIDO!');
+  //         },
+  //         (error) => {
+  //           alert('Error al subir el audio', error);
+  //         }
+  //       );
+  //   } else {
+  //     alert('ERROR FALTAN DATOS');
+  //   }
+  // }
+
 
 // codigo aparate
   private extractBase64 = async ($event: any): Promise<{ base: string | null }> => {
@@ -161,7 +162,6 @@ export class FormRegisterComponent {
       }
     });
   }
-
 
   // Seleccion de formato
   updateAcceptAttribute(event: any) {
