@@ -9,6 +9,47 @@
     margin-top: 10px;
     color: white;
 }
+.iconoUno{
+    position: absolute;
+    right:10%;
+    top: 17%; 
+}
+.iconoDos{
+    position: absolute;
+    right:10%;
+    top: 37%; 
+}
+.iconoTres{
+    position: absolute;
+    right:10%;
+    top: 57%; 
+}
+.iconoCuatro{
+    position: absolute;
+    right:10%;
+    top: 77%; 
+}
+
+.iconosUno{     
+    position: absolute;
+    right:10%;
+    top: 10%; 
+}
+.iconosDos{     
+    position: absolute;
+    right:10%;
+    top: 30%; 
+}
+.iconosTres{     
+    position: absolute;
+    right:10%;
+    top: 50%; 
+}
+.iconosCuatro{     
+    position: absolute;
+    right:10%;
+    top: 70%; 
+}
 
 .scroll-bg{
     background: linear-gradient(black,purple);       
