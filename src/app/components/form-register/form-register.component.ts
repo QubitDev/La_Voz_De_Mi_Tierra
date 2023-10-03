@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-//import { AudioService } from './audio.service'
+
 
 @Component({
   selector: 'app-form-register',
@@ -75,10 +75,7 @@ export class FormRegisterComponent {
   }
     const capturedFile = event.target.files[0];
     const formData = audioForm.value;
-    // this.extractBase64(capturedFile).then(image => {
-    //   this.preview = image.base !== null ? image.base : '';
-    //   console.log(image);
-    // });
+
     this.files.push(capturedFile, formData);
   }
 
@@ -115,9 +112,7 @@ export class FormRegisterComponent {
     this.audioForm.reset();
   }
 
-  // private  verifyFile() {
-  //   // Implementar la funcionalidad de verificación
-  // }
+
 
   // uploadFile() {
   //   if (this.audioForm.valid) {
@@ -136,32 +131,6 @@ export class FormRegisterComponent {
   //   }
   // }
 
-
-// codigo aparate
-  private extractBase64 = async ($event: any): Promise<{ base: string | null }> => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const unsafeImg = window.URL.createObjectURL($event);
-        let image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result as string
-          });
-        };
-        reader.onerror = error => {
-          resolve({
-            base: null
-          });
-        };
-      } catch (e) {
-        resolve({
-          base: null
-        });
-      }
-    });
-  }
 
   // Seleccion de formato
   updateAcceptAttribute(event: any) {
