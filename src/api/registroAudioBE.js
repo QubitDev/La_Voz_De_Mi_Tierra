@@ -57,3 +57,26 @@ database.ref("audios").push(audio, function(error) {
   }
 });
 
+const storage = getStorage(app);
+
+// Function to upload files
+function uploadFile(files) {
+  try {
+    files.forEach(async (file) => {
+      const storageRef = ref(storage, `your-desired-path/${file.name}`);
+      const snapshot = await uploadBytes(storageRef, file);
+
+      console.log("File uploaded:", file.name);
+
+
+      const downloadURL = await getDownloadURL(storageRef);
+      console.log("Download URL:", downloadURL);
+    });
+  } catch (error) {
+    console.error("Error uploading files:", error);
+  }
+}
+
+const files = [/* your files here */];
+uploadFile(files);
+
