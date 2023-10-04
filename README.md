@@ -1,12 +1,18 @@
 # LaVozDeMiTierra
 
 Este proyecto fue generado con Angular CLI versión 16.2.3.
-Despues de clonar el repositorio:
+Instalar angular cli:
       npm install -g @angular/cli
-  agreagar por comandos:
-      npm install @angular/material --save
-      npm install @angular/fire firebase
+clonar repositorio:
+      git clone url
+
+instalar las dependencias de node module:
       npm install
+levantar servidor local
+      ng serve
+    
+agreagar por comandos
+      npm install @angular/fire firebase
       
 ## Servidor de desarrollo
 
