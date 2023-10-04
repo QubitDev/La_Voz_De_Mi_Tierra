@@ -8,6 +8,29 @@ const firebaseConfig = {
   messagingSenderId: "74114126448",
   appId: "1:74114126448:web:cf2ac4ef9388cd8c699ab5"
 };
+/**
+ * // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCph5kr75PvtolotkpfB8wW1QpAFTaZqZQ",
+  authDomain: "qubit-angular-firebase.firebaseapp.com",
+  projectId: "qubit-angular-firebase",
+  storageBucket: "qubit-angular-firebase.appspot.com",
+  messagingSenderId: "359055005446",
+  appId: "1:359055005446:web:bb253d8cf3a18c3ca83087",
+  measurementId: "G-NPTWN6JG0M"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+ * 
+ */
 
 const app = initializeApp(firebaseConfig);
 
@@ -33,3 +56,4 @@ database.ref("audios").push(audio, function(error) {
     console.log("Datos agregados correctamente");
   }
 });
+

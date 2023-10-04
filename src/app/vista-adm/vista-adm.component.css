@@ -1,8 +1,7 @@
 .CUENTOS{
     font-family: sans-serif;
     margin-top: 10px;
-    color: white;
-    
+    color: white;    
 }
 .LEYENDAS{
     font-family: sans-serif;
@@ -10,45 +9,46 @@
     color: white;
 }
 .iconoUno{
+    transition: background-color 0.3s;
     position: absolute;
     right:10%;
-    top: 17%; 
+    top: 18%; 
 }
 .iconoDos{
     position: absolute;
     right:10%;
-    top: 37%; 
+    top: 38%; 
 }
 .iconoTres{
     position: absolute;
     right:10%;
-    top: 57%; 
+    top: 58%; 
 }
 .iconoCuatro{
     position: absolute;
     right:10%;
-    top: 77%; 
+    top: 78%; 
 }
 
 .iconosUno{     
     position: absolute;
     right:10%;
-    top: 10%; 
+    top: 11%; 
 }
 .iconosDos{     
     position: absolute;
     right:10%;
-    top: 30%; 
+    top: 31%; 
 }
 .iconosTres{     
     position: absolute;
     right:10%;
-    top: 50%; 
+    top: 51%; 
 }
 .iconosCuatro{     
     position: absolute;
     right:10%;
-    top: 70%; 
+    top: 71%; 
 }
 
 .scroll-bg{
@@ -59,9 +59,8 @@
     position: absolute;
     right: 44%;
     top: 11%;
-    border: 5px solid #000
-    color white;
-    
+    border: 5% solid #000
+    color white;    
 }
 .scroll-div{
     background: linear-gradient(black,purple); 
@@ -73,10 +72,7 @@
 .scroll-object{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    padding: 20px;
-    margin-top: 10px;
-    
+    font-size: 18px;    
 }
 .DosScroll-bg{
     background: linear-gradient(black,purple);  
@@ -87,8 +83,9 @@
     right: 1%;
     top: 11%;    
     border: 5px solid #000
-    color white;   
+    color(srgb rgb(255, 255, 255))
 }
+
 .DosScroll-div{
     width: 100%;
     height: 100%;
@@ -99,37 +96,55 @@
 .DosScroll-object{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    padding: 20px;
+    font-size: 18px;
+    padding: 10px;
 }
 .contenidoUno{
     font-family: sans-serif;  
     color: white;  
     position: absolute;
-    right:30%;
+    right:40%;
     top: 10%; 
+    
 }
 .contenidoDos{
     font-family: sans-serif;  
     color: white;  
     position: absolute;
-    right: 30%;
+    right: 40%;
     top: 30%;
 }
 .contenidoTres{
     font-family: sans-serif;  
     color: white; 
     position: absolute;
-    right: 30%;
+    right: 40%;
     top: 50%;
 }
 .contenidoCuatro{
     font-family: sans-serif;  
     color: white;  
     position: absolute;
-    right: 30%;
+    right: 40%;
     top: 70%;
 }
 .imageUno{
-    margin-left: 5px;
+    position: absolute;
+    right: 81%;
+    top: 73%;
+}
+.imageDos{
+    position: absolute;
+    right: 81%;
+    top: 52%;
+}
+.imageTres{
+    position: absolute;
+    right: 81%;
+    top: 31%;
+}
+.imageCuatro{
+    position: absolute;
+    right: 81%;
+    top: 10%;
 }

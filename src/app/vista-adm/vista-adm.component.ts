@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./vista-adm.component.css']
 })
 export class VistaAdmComponent {
-
+  
 }
+
