@@ -6,6 +6,8 @@ Despues de clonar el repositorio:
   agreagar por comandos:
       npm install @angular/material --save
       npm install @angular/fire firebase
+      npm install
+      
 ## Servidor de desarrollo
 
 Ejecute ng serve para iniciar un servidor de desarrollo. Navegue a http://localhost:4200/. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.
