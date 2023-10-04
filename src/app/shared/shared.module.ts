@@ -18,6 +18,6 @@ import { AsideComponent } from './aside/aside.component';
     AsideComponent
   ]
 
-  
+
 })
 export class SharedModule { }

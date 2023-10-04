@@ -4,15 +4,15 @@
     padding-top: 0px;
     height:  150px;
     width: 150px;
-    position: absolute;
+    position: fixed;
     top: 50px; /* Ajusta la posición vertical según sea necesario */
     left: 20px; /* Ajusta la posición horizontal según sea necesario */
     z-index: 9999; /* Asegura que esté por encima de todo */
-    display: inline-block;
+    /* display: inline-block; */
     box-sizing:border-box ;
     text-align: center;
     box-shadow: 10px 10px 15px 5px black;
-    
+
   }
   .menu {
     width: 200px;
